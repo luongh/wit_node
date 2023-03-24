@@ -71,10 +71,10 @@ bool WitRos::update() {
 }
 
 void WitRos::advertiseTopics(NodeHandle &nh) {
-  imu_pub_ = nh.advertise<sensor_msgs::Imu>("/imu", 1000);
-  gps_pub_ = nh.advertise<sensor_msgs::NavSatFix>("/gps", 1000);
-  raw_data_pub_ = nh.advertise<wit_node::ImuGpsRaw>("raw_data", 1000);
-  related_yaw_pub_ = nh.advertise<std_msgs::Float64>("related_yaw", 1000);
+  imu_pub_ = nh.advertise<sensor_msgs::Imu>("wit_node/imu", 1000);
+  //gps_pub_ = nh.advertise<sensor_msgs::NavSatFix>("/gps", 1000);
+  //raw_data_pub_ = nh.advertise<wit_node::ImuGpsRaw>("raw_data", 1000);
+  //related_yaw_pub_ = nh.advertise<std_msgs::Float64>("related_yaw", 1000);
 }
 
 void WitRos::subscribeTopics(NodeHandle &nh) {
@@ -150,9 +150,9 @@ void WitRos::processStreamData() {
     yaw_msg.data = wd_.getRelatedYaw();
 
     imu_pub_.publish(imu_msg);
-    gps_pub_.publish(gps_msg);
-    raw_data_pub_.publish(raw_msg);
-    related_yaw_pub_.publish(yaw_msg);
+    //gps_pub_.publish(gps_msg);
+    //raw_data_pub_.publish(raw_msg);
+    //related_yaw_pub_.publish(yaw_msg);
   }
 }
 }
